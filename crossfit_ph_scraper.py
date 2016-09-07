@@ -19,6 +19,21 @@ def get_content(date):
                                  headers={'User-Agent': 'Mozilla/5.0'})
     response = urllib.request.urlopen(req)
     page = response.read()
-    soup = BeautifulSoup(page, "html.parser")
 
-    return soup
+    return page
+
+def format_content(page):
+    """
+    Parse and format the content of the html page
+    """
+
+    soup = BeautifulSoup(page, "html.parser")
+    pageContent = soup.findAll("div", { "class" : "pageContent" })
+    wod_text = pageContent[0].get_text()
+
+    return wod_text
+
+if __name__ == "__main__":
+    page = get_content("2016/09/06/wod-wednesday-sept-7/")
+    text = format_content(page)
+    print(text)
