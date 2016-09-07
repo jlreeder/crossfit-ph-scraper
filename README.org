@@ -1,0 +1,10 @@
+#+TITLE: Crossfit PH Scraper
+
+This Python script pulls the text of the latest WOD at Crossfit Potrero Hill. I use it to keep my own records of the workouts I do.
+
+To run:
+: python3 crossfit_ph_scraper.py
+
+Requirements:
+- Python3
+- BeautifulSoup4
