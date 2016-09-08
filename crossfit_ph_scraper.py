@@ -1,11 +1,25 @@
 import urllib.request
+from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
-def format_date():
+def format_date(delay=0):
     """
-    TODO: Format date for wod blog
+    Format date for wod blog
+
+    Delay is how many days ago, default 0 (today)
     """
-    pass
+
+    day = date.today() - timedelta(delay)
+    weekday = day.strftime("%A").lower()
+    month = day.strftime("%B")[:4].lower()
+
+    # NOTE: Post date is usually one before WOD date
+    post_day = day - timedelta(1)
+    post_date = post_day.strftime("%Y/%m/%d")
+
+    post_title = "/wod-%s-%s-%s/" % (weekday, month, day.day)
+
+    return post_date + post_title
 
 def get_content(date):
     """
