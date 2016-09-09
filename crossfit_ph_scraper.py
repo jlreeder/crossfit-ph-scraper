@@ -51,11 +51,17 @@ def format_content(page):
     # Clean up
     lines = relevant.splitlines()
     lines = [line for line in lines if line]
-    lines = lines[3:]
+    lines = lines[4:]
 
     # Format
-    # TODO: Add indents to all lines except ones with colons
-    wod_text = "\n- ".join(lines)
+    HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:"]
+    wod_text = ""
+    for line in lines:
+        if line in HEADERS:
+            line = "- " + line
+        else:
+            line = "  - " + line
+        wod_text += line + "\n"
 
     return wod_text
 
