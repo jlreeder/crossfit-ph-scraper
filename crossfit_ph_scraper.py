@@ -39,14 +39,23 @@ def get_content(date):
 def format_content(page):
     """
     Parse and format the content of the html page
-
-    TODO: This is not returning all the content I want.
-    It is missing the levels. Get the levels.
     """
 
+    # Isolate WOD Text
     soup = BeautifulSoup(page, "html.parser")
-    pageContent = soup.findAll("div", { "class" : "pageContent" })
-    wod_text = pageContent[0].get_text()
+    text = soup.get_text()
+
+    pre, relevant = text.split("FAQ")
+    relevant, post = relevant.split("WOD LOGGING")
+
+    # Clean up
+    lines = relevant.splitlines()
+    lines = [line for line in lines if line]
+    lines = lines[3:]
+
+    # Format
+    # TODO: Add indents to all lines except ones with colons
+    wod_text = "\n- ".join(lines)
 
     return wod_text
 
