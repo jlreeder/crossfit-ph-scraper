@@ -70,8 +70,8 @@ if __name__ == "__main__":
 
     # Configure arguments
     parser = argparse.ArgumentParser(description="Get Workout at Crossfit-PH")
-    parser.add_argument('delay', metavar='D', type=int,
-                        help='How many days ago was the workout (today would be 0)')
+    parser.add_argument("delay", metavar="D", type=int, nargs="?", default="0",
+                        help="How many days ago was the workout (today would be 0)")
     args = parser.parse_args()
     delay = args.delay
 
