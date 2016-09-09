@@ -1,4 +1,5 @@
 import urllib.request
+import argparse
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
@@ -66,7 +67,15 @@ def format_content(page):
     return wod_text
 
 if __name__ == "__main__":
-    date = format_date()
+
+    # Configure arguments
+    parser = argparse.ArgumentParser(description="Get Workout at Crossfit-PH")
+    parser.add_argument('delay', metavar='D', type=int,
+                        help='How many days ago was the workout (today would be 0)')
+    args = parser.parse_args()
+    delay = args.delay
+
+    date = format_date(delay)
     content = get_content(date)
     text = format_content(content)
     print(text)
