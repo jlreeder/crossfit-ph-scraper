@@ -39,6 +39,9 @@ def get_content(date):
 def format_content(page):
     """
     Parse and format the content of the html page
+
+    TODO: This is not returning all the content I want.
+    It is missing the levels. Get the levels.
     """
 
     soup = BeautifulSoup(page, "html.parser")
@@ -48,6 +51,7 @@ def format_content(page):
     return wod_text
 
 if __name__ == "__main__":
-    page = get_content("2016/09/06/wod-wednesday-sept-7/")
-    text = format_content(page)
+    date = format_date()
+    content = get_content(date)
+    text = format_content(content)
     print(text)
