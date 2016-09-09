@@ -3,6 +3,7 @@ import argparse
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
+
 def format_date(delay=0):
     """
     Format date for wod blog
@@ -22,6 +23,7 @@ def format_date(delay=0):
 
     return post_date + post_title
 
+
 def get_content(date):
     """
     Get the content of the WOD blog for a given date
@@ -30,12 +32,13 @@ def get_content(date):
     base_url = "http://crossfitph.com/"
     crossfit_ph_url = base_url + date
 
-    req = urllib.request.Request(crossfit_ph_url,
-                                 headers={'User-Agent': 'Mozilla/5.0'})
+    req = urllib.request.Request(
+        crossfit_ph_url, headers={'User-Agent': 'Mozilla/5.0'})
     response = urllib.request.urlopen(req)
     page = response.read()
 
     return page
+
 
 def format_content(page):
     """
@@ -66,12 +69,18 @@ def format_content(page):
 
     return wod_text
 
+
 if __name__ == "__main__":
 
     # Configure arguments
     parser = argparse.ArgumentParser(description="Get Workout at Crossfit-PH")
-    parser.add_argument("delay", metavar="D", type=int, nargs="?", default="0",
-                        help="How many days ago was the workout (today would be 0)")
+    parser.add_argument(
+        "delay",
+        metavar="D",
+        type=int,
+        nargs="?",
+        default="0",
+        help="How many days ago was the workout (today would be 0)")
     args = parser.parse_args()
     delay = args.delay
 
