@@ -57,10 +57,10 @@ def format_content(page):
     HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:"]
     wod_text = ""
     for line in lines:
+        prefix = "  - "
         if line in HEADERS:
-            line = "- " + line
-        else:
-            line = "  - " + line
+            prefix = "- "
+        line = prefix + line
         wod_text += line + "\n"
 
     return wod_text
