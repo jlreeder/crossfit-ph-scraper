@@ -55,11 +55,11 @@ def format_content(page):
     # Clean up
     lines = relevant.splitlines()
     lines = [line for line in lines if line]
-    lines = lines[4:]
+    lines = lines[2:]
 
     # Format
     HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:"]
-    wod_text = ""
+    wod_text = lines.pop(0) + "\n" + lines.pop(0) + "\n\n"
     for line in lines:
         prefix = "  - "
         if line in HEADERS:
