@@ -1,9 +1,12 @@
 #+TITLE: Crossfit PH Scraper
 
-This Python script pulls the text of the latest WOD at Crossfit Potrero Hill. I use it to keep my own records of the workouts I do.
+This Python script pulls the text of the latest workout at Crossfit Potrero Hill. I use it to keep my own records of the workouts I do.
 
 To run:
 : python3 crossfit_ph_scraper.py
+
+You can add an optional numerical argument to get previous workouts. Add 1 for every day you want to go back. For example, this will return the workout from 2 days ago:
+: python3 crossfit_ph_scraper.py 2
 
 Requirements:
 - Python3
