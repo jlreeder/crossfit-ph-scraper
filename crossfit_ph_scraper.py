@@ -58,7 +58,7 @@ def format_content(page):
     lines = lines[2:]
 
     # Format
-    HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:"]
+    HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:", "Warm:"]
     wod_text = lines.pop(0) + "\n" + lines.pop(0) + "\n\n"
     for line in lines:
         prefix = "  - "
