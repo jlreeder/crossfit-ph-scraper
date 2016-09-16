@@ -58,7 +58,8 @@ def format_content(page):
     lines = lines[2:]
 
     # Format
-    HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:", "Warm:"]
+    HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:",
+               "Warm:"]
 
     # Include title
     wod_text = lines.pop(0) + "\n\n"
