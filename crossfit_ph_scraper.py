@@ -59,7 +59,14 @@ def format_content(page):
 
     # Format
     HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:", "Warm:"]
-    wod_text = lines.pop(0) + "\n" + lines.pop(0) + "\n\n"
+
+    # Include title
+    wod_text = lines.pop(0) + "\n\n"
+
+    # Ignore by-line
+    del lines[0]
+
+    # Add contents as bullets
     for line in lines:
         prefix = "  - "
         if line in HEADERS:
