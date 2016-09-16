@@ -54,7 +54,7 @@ def format_content(page):
 
     # Clean up
     lines = relevant.splitlines()
-    lines = [line for line in lines if line]
+    lines = [line.strip() for line in lines if line]
     lines = lines[2:]
 
     # Format
