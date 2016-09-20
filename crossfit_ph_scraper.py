@@ -1,8 +1,8 @@
 import urllib.request
 import argparse
+import os 
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
-
 
 def format_date(delay=0):
     """
@@ -96,3 +96,6 @@ if __name__ == "__main__":
     content = get_content(date)
     text = format_content(content)
     print(text)
+
+    # Copy to clipboard
+    os.system("echo '%s' | pbcopy" % text)
