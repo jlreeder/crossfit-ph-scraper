@@ -13,7 +13,12 @@ def format_date(delay=0):
 
     day = date.today() - timedelta(delay)
     weekday = day.strftime("%A").lower()
-    month = day.strftime("%B")[:4].lower()
+
+    # NOTE: September was abbreviated "sept", October "oct", not sure of others
+    abbreviation_len = 4
+    if day.month == 10:
+        abbreviation_len = 3
+    month = day.strftime("%B")[:abbreviation_len].lower()
 
     # NOTE: Post date is usually one before WOD date
     post_day = day - timedelta(1)
