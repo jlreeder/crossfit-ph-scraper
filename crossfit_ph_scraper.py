@@ -1,6 +1,6 @@
 import urllib.request
 import argparse
-import os 
+import os
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
