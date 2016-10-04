@@ -98,9 +98,16 @@ if __name__ == "__main__":
     delay = args.delay
 
     date = format_date(delay)
-    content = get_content(date)
-    text = format_content(content)
-    print(text)
 
-    # Copy to clipboard
-    os.system("echo '%s' | pbcopy" % text)
+    try:
+        content = get_content(date)
+        text = format_content(content)
+        print(text)
+
+        # Copy to clipboard
+        os.system("echo '%s' | pbcopy" % text)
+    except urllib.error.HTTPError:
+        print("ERROR: Couldn't find URL:\n%s" % "http://crossfitph.com/" + date)
+    except urllib.error.URLError:
+        print("ERROR: No internet connection")
+
