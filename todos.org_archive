@@ -1,0 +1,57 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /Users/Jason/Created/Projects/crossfit-ph-scraper/todos.org
+
+
+* DONE Return Error when no internet connection
+CLOSED: [2016-10-03 Mon 21:03]
+:PROPERTIES:
+:ARCHIVE_TIME: 2016-10-03 Mon 21:03
+:ARCHIVE_FILE: ~/Created/Projects/crossfit-ph-scraper/todos.org
+:ARCHIVE_CATEGORY: todos
+:ARCHIVE_TODO: DONE
+:END:
+- URLError?
+** Traceback:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 1254, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py", line 1106, in request
+    self._send_request(method, url, body, headers)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py", line 1151, in _send_request
+    self.endheaders(body)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py", line 1102, in endheaders
+    self._send_output(message_body)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py", line 934, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py", line 877, in send
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/http/client.py", line 849, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socket.py", line 693, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/socket.py", line 732, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "crossfit_ph_scraper.py", line 96, in <module>
+    content = get_content(date)
+  File "crossfit_ph_scraper.py", line 37, in get_content
+    response = urllib.request.urlopen(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 163, in urlopen
+    return opener.open(url, data, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 466, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 484, in _open
+    '_open', req)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 444, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 1282, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/urllib/request.py", line 1256, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
