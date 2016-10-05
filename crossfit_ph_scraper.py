@@ -4,6 +4,7 @@ import os
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
+
 def format_date(delay=0):
     """
     Format date for wod blog
@@ -110,7 +111,8 @@ def main():
         # Copy to clipboard
         os.system("echo '%s' | pbcopy" % text)
     except urllib.error.HTTPError:
-        print("ERROR: Couldn't find URL:\n%s" % "http://crossfitph.com/" + date)
+        print("ERROR: Couldn't find URL:\n%s" % "http://crossfitph.com/" +
+              date)
     except urllib.error.URLError:
         print("ERROR: No internet connection")
 
