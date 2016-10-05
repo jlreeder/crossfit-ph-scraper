@@ -1,3 +1,9 @@
+"""
+Crossfit Potrero Hill Scraper
+
+Find the latest workout at Crossfit Potrero Hill
+"""
+
 import urllib.request
 import argparse
 import os
