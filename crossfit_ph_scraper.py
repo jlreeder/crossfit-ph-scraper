@@ -83,7 +83,10 @@ def format_content(page):
     return wod_text
 
 
-if __name__ == "__main__":
+def main():
+    """
+    Implement helper functions
+    """
 
     # Configure arguments
     parser = argparse.ArgumentParser(description="Get Workout at Crossfit-PH")
@@ -97,8 +100,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     delay = args.delay
 
+    # Run helper functions with configured args
     date = format_date(delay)
-
     try:
         content = get_content(date)
         text = format_content(content)
@@ -111,3 +114,6 @@ if __name__ == "__main__":
     except urllib.error.URLError:
         print("ERROR: No internet connection")
 
+
+if __name__ == "__main__":
+    main()
