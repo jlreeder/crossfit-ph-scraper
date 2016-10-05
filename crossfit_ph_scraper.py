@@ -55,7 +55,7 @@ def format_content(page):
     text = soup.get_text()
 
     pre, relevant = text.split("FAQ")
-    relevant, post = relevant.split("WOD LOGGING")
+    relevant, post, extra = relevant.split("WOD LOGGING")
 
     # Clean up
     lines = relevant.splitlines()
