@@ -61,8 +61,10 @@ def format_content(page):
     soup = BeautifulSoup(page, "html.parser")
     text = soup.get_text()
 
-    pre, relevant = text.split("FAQ")
-    relevant, post, extra = relevant.split("WOD LOGGING")
+    beginning_split = text.split("FAQ")
+    relevant = beginning_split[1]
+    middle_split = relevant.split("WOD LOGGING")
+    relevant = middle_split[0]
 
     # Clean up
     lines = relevant.splitlines()
