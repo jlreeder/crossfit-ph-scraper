@@ -21,10 +21,12 @@ def format_date(delay=0):
     day = date.today() - timedelta(delay)
     weekday = day.strftime("%A").lower()
 
-    # NOTE: September was abbreviated "sept", October "oct", not sure of others
-    abbreviation_len = 4
-    if day.month == 10:
-        abbreviation_len = 3
+    # NOTE: Month abbreviations are inconsistent. October and November are 3
+    # chars (oct, nov) while September is 4 chars (sept). Unsure of others but
+    # will default to 3 chars
+    abbreviation_len = 3
+    if day.month == 9:
+        abbreviation_len = 4
     month = day.strftime("%B")[:abbreviation_len].lower()
 
     # NOTE: Post date is usually one before WOD date
