@@ -65,7 +65,7 @@ def format_content(page):
 
     beginning_split = text.split("FAQ")
     relevant = beginning_split[1]
-    middle_split = relevant.split("WOD LOGGING")
+    middle_split = relevant.split("Athlete of the")
     relevant = middle_split[0]
 
     # Clean up
