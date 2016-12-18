@@ -71,19 +71,14 @@ def format_content(page):
     # Clean up
     lines = relevant.splitlines()
     lines = [line.strip() for line in lines if line]
-    lines = lines[2:]
+    lines = lines[4:]
 
     # Format
     HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:",
                "Warm:", "Finisher:", "9:30 and 10:30 am Regular CrossFit"]
 
-    # Include title
-    wod_text = lines.pop(0) + "\n\n"
-
-    # Ignore by-line
-    del lines[0]
-
     # Add contents as bullets
+    wod_text = ""
     for line in lines:
         prefix = "  - "
         if line in HEADERS:
