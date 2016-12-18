@@ -10,15 +10,21 @@ import os
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
-
-def format_date(delay=0):
+def parse_date(delay=0):
     """
-    Format date for wod blog
+    Parse the input given, return the date requested.
 
     Delay is how many days ago, default 0 (today)
     """
 
-    day = date.today() - timedelta(delay)
+    return date.today() - timedelta(delay)
+
+
+def format_date(day):
+    """
+    Format date for wod blog url
+    """
+
     weekday = day.strftime("%A").lower()
 
     # NOTE: Month abbreviations are inconsistent. October and November are 3
@@ -107,9 +113,10 @@ def main():
     delay = args.delay
 
     # Run helper functions with configured args
-    date = format_date(delay)
+    date_requested = parse_date(delay)
+    formatted_date = format_date(date_requested)
     try:
-        url, content = get_content(date)
+        url, content = get_content(formatted_date)
         text = format_content(content)
         print(text)
         print("Scraped from: \n{}".format(url))
