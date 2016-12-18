@@ -75,7 +75,7 @@ def format_content(page):
 
     # Format
     HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:",
-               "Warm:"]
+               "Warm:", "Finisher:", "9:30 and 10:30 am Regular CrossFit"]
 
     # Include title
     wod_text = lines.pop(0) + "\n\n"
