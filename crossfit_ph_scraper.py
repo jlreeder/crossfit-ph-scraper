@@ -51,7 +51,7 @@ def get_content(date):
     response = urllib.request.urlopen(req)
     page = response.read()
 
-    return page
+    return (crossfit_ph_url, page)
 
 
 def format_content(page):
@@ -114,9 +114,10 @@ def main():
     # Run helper functions with configured args
     date = format_date(delay)
     try:
-        content = get_content(date)
+        url, content = get_content(date)
         text = format_content(content)
         print(text)
+        print("Scraped from: \n{}".format(url))
 
         # Copy to clipboard
         os.system("echo '%s' | pbcopy" % text)
