@@ -10,6 +10,7 @@ import os
 from datetime import date, timedelta
 from bs4 import BeautifulSoup
 
+
 def parse_date(delay=0):
     """
     Parse the input given, return the date requested.
@@ -58,6 +59,17 @@ def get_content(date):
     page = response.read()
 
     return (crossfit_ph_url, page)
+
+
+def format_title(date):
+    """
+    Prepare the title text for output
+    """
+
+    heading = "POTRERO HILL CROSSFIT"
+    subheading = "WOD: {}".format(str(date))
+
+    return "{}\n{}".format(heading, subheading)
 
 
 def format_content(page):
@@ -118,6 +130,8 @@ def main():
     try:
         url, content = get_content(formatted_date)
         text = format_content(content)
+        title = format_title(date_requested)
+        print(title)
         print(text)
         print("Scraped from: \n{}".format(url))
 
