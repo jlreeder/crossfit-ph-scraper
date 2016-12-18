@@ -61,15 +61,15 @@ def get_content(date):
     return (crossfit_ph_url, page)
 
 
-def format_title(date):
+def format_title(date, width=10):
     """
-    Prepare the title text for output
+    Prepare the title text for output using date and terminal width
     """
 
-    heading = "POTRERO HILL CROSSFIT"
-    subheading = "WOD: {}".format(str(date))
+    heading = "POTRERO HILL CROSSFIT".center(width, " ")
+    subheading = "WOD: {}".format(str(date)).center(width, " ")
 
-    return "{}\n{}".format(heading, subheading)
+    return "\n{}\n{}".format(heading, subheading)
 
 
 def format_content(page):
@@ -124,18 +124,22 @@ def main():
     args = parser.parse_args()
     delay = args.delay
 
+    # Get terminal width
+    width = int(os.popen('stty size', 'r').read().split()[1])
+    divider = "~" * width
+
     # Run helper functions with configured args
     date_requested = parse_date(delay)
     formatted_date = format_date(date_requested)
     try:
         url, content = get_content(formatted_date)
         text = format_content(content)
-        title = format_title(date_requested)
-        print(title)
-        print(text)
-        print("Scraped from: \n{}".format(url))
+        title = format_title(date_requested, width)
+        formatted_url = "Scraped from: {}".format(url)
+        print("{}{}\n\n{}\n{}\n{}".format(divider, title, text, formatted_url,
+                                          divider))
 
-        # Copy to clipboard
+        # Copy only the wod text to clipboard
         os.system("echo '%s' | pbcopy" % text)
     except urllib.error.HTTPError:
         print("ERROR: Couldn't find URL:\n%s" % "http://crossfitph.com/" +
