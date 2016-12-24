@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Crossfit Potrero Hill Scraper
 
