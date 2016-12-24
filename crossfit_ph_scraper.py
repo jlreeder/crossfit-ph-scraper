@@ -94,7 +94,8 @@ def format_content(page):
 
     # Format
     HEADERS = ["Strength A:", "Strength B:", "Strength:", "WOD:", "Skill:",
-               "Warm:", "Finisher:", "9:30 and 10:30 am Regular CrossFit"]
+               "Warm:", "Finisher:", "9:30 and 10:30 am Regular CrossFit",
+               "8:30 am Lite N Tite"]
 
     # Add contents as bullets
     wod_text = ""
