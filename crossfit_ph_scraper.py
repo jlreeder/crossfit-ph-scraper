@@ -46,16 +46,22 @@ def format_date(day):
     return post_date + post_title
 
 
-def get_content(date):
+def format_url(raw_date):
     """
-    Get the content of the WOD blog for a given date
+    From a raw date, return the URL used by the PH Crosfit website.
     """
 
     base_url = "http://crossfitph.com/"
-    crossfit_ph_url = base_url + date
 
-    req = urllib.request.Request(
-        crossfit_ph_url, headers={'User-Agent': 'Mozilla/5.0'})
+    return base_url + raw_date
+
+
+def get_content(url):
+    """
+    Get the content of the WOD blog for a given url
+    """
+
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     response = urllib.request.urlopen(req)
     page = response.read()
 
@@ -119,8 +125,16 @@ def main():
         nargs="?",
         default="0",
         help="How many days ago was the workout (today would be 0)")
+    parser.add_argument(
+        "custom_url",
+        metavar="U",
+        type=str,
+        nargs="?",
+        default="",
+        help="Custom url (if default was unsuccessful)")
     args = parser.parse_args()
     delay = args.delay
+    custom_url = args.custom_url
 
     # Get terminal width
     width = int(os.popen('stty size', 'r').read().split()[1])
@@ -130,10 +144,10 @@ def main():
     date_requested = parse_date(delay)
     formatted_date = format_date(date_requested)
     title = format_title(date_requested, width)
-    formatted_url = "Scraped from: http://crossfitph.com/{}".format(formatted_date)
-    print("{}{}\n{}\n\n".format(divider, title, formatted_url))
+    formatted_url = format_url(formatted_date)
+    print("{}{}\nScraped from:{}\n\n".format(divider, title, formatted_url))
     try:
-        content = get_content(formatted_date)
+        content = get_content(formatted_url)
         text = format_content(content)
         print(text)
         # Copy only the wod text to clipboard
