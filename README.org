@@ -1,5 +1,4 @@
 #+TITLE: Crossfit PH Scraper
-* About
 This Python script finds and formats the text of the latest workout at Crossfit Potrero Hill. It then prints out that text and copies it to the clipboard. I use it to keep my own records of the workouts I do.
 
 To run:
