@@ -129,11 +129,9 @@ def main():
         default="0",
         help="How many days ago was the workout (today would be 0)")
     parser.add_argument(
-        "custom_url",
-        metavar="U",
-        type=str,
-        nargs="?",
-        default="",
+        '--url',
+        action="store",
+        dest="custom_url",
         help="Custom url (if default was unsuccessful)")
     args = parser.parse_args()
     delay = args.delay
@@ -147,10 +145,12 @@ def main():
     date_requested = parse_date(delay)
     formatted_date = format_date(date_requested)
     title = format_title(date_requested, width)
-    formatted_url = format_url(formatted_date)
-    print("{}{}\nScraped from:{}\n\n".format(divider, title, formatted_url))
+    url_to_query = format_url(formatted_date)
+    if custom_url:
+        url_to_query = custom_url
+    print("{}{}\nURL: {}\n".format(divider, title, url_to_query))
     try:
-        content = get_content(formatted_url)
+        content = get_content(url_to_query)
         text = format_content(content)
         print(text)
         # Copy only the wod text to clipboard
