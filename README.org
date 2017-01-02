@@ -16,12 +16,3 @@ Requirements:
 - BeautifulSoup4
 
 Note that the copy to clipboard functionality has only been tested on Mac OS.
-* TODOs
-** Account for unexpected URLs
-- One example:
-  - Expected: http://crossfitph.com/2016/10/28/wod-saturday-oct-29/
-  - Actual: http://crossfitph.com/2016/10/28/halloween-wod-and-party-saturday-oct-29/
-- Solutions
-  - Allow a command line argument to specify certain URLs
-  - Search for any url that meets the correct posting date (regardless of title)
-** Add license
