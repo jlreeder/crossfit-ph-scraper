@@ -90,7 +90,7 @@ def format_content(page):
     # Clean up
     lines = relevant.splitlines()
     lines = [line.strip() for line in lines if line]
-    lines = lines[4:]
+    lines = lines[4:-1]
 
     # Add contents as bullets
     wod_text = ""
