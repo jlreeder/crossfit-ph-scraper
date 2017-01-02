@@ -59,7 +59,7 @@ def get_content(date):
     response = urllib.request.urlopen(req)
     page = response.read()
 
-    return (crossfit_ph_url, page)
+    return page
 
 
 def format_title(date, width=10):
@@ -133,19 +133,17 @@ def main():
     # Run helper functions with configured args
     date_requested = parse_date(delay)
     formatted_date = format_date(date_requested)
+    title = format_title(date_requested, width)
+    formatted_url = "Scraped from: http://crossfitph.com/{}".format(formatted_date)
+    print("{}{}\n{}\n\n".format(divider, title, formatted_url))
     try:
-        url, content = get_content(formatted_date)
+        content = get_content(formatted_date)
         text = format_content(content)
-        title = format_title(date_requested, width)
-        formatted_url = "Scraped from: {}".format(url)
-        print("{}{}\n\n{}\n{}\n{}".format(divider, title, text, formatted_url,
-                                          divider))
-
+        print(text)
         # Copy only the wod text to clipboard
         os.system("echo '%s' | pbcopy" % text)
     except urllib.error.HTTPError:
-        print("ERROR: Couldn't find URL:\n%s" % "http://crossfitph.com/" +
-              date)
+        print("Sorry, couldn't find any data at this url.")
     except urllib.error.URLError:
         print("ERROR: No internet connection")
 
