@@ -1,2 +1,7 @@
 #+TITLE: TODOs
 * Add license
+* New method to get latest WOD
+- Currently, the latest WOD is found using today's date and predicting the title
+- Sometimes the tiles are unpredictable (such as for holidays)
+- Is there a way to get the latest url from the [[http://crossfitph.com/wod-blog/][wod blog page]]?
+- If so, then it wouldn't matter what the wod title was - this could just pull the nth WOD from the top
