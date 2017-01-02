@@ -8,6 +8,9 @@ To run:
 You can add an optional numerical argument to get previous workouts. Add 1 for every day you want to go back. For example, this will return the workout from 2 days ago:
 : python3 crossfit_ph_scraper.py 2
 
+You can add a custom url after the keyword ~--url~. Sometimes the titles of the workouts are irregular, but if you find the URL and add it in this way, you can still get the plain text formatting of the content. For example, this will get you the workout for New Years Eve 2017, which was unexpected titled "NYE WOD"
+: crossfit_ph_scraper.py --u http://crossfitph.com/2016/12/30/nye-wod-saturday-dec-31/
+
 Requirements:
 - Python3
 - BeautifulSoup4
