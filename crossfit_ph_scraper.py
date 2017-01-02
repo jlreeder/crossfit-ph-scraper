@@ -156,7 +156,8 @@ def main():
         # Copy only the wod text to clipboard
         os.system("echo '%s' | pbcopy" % text)
     except urllib.error.HTTPError:
-        print("Sorry, couldn't find any data at this url.")
+        print(
+            "WOD Not Found:\n- Sorry, couldn't find any data at this url. Either there is no WOD today or there is a special WOD title. Check the WOD Blog for the correct url and then add it in as an argument with '--url {url}'.\n- http://crossfitph.com/wod-blog/\n")
     except urllib.error.URLError:
         print("ERROR: No internet connection")
 
