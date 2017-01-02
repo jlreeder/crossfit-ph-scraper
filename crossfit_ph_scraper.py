@@ -99,7 +99,7 @@ def format_content(page):
     # Clean up
     lines = relevant.splitlines()
     lines = [line.strip() for line in lines if line]
-    lines = lines[4:-1]
+    lines = lines[4:]
 
     # Headers
     headers = ["Regular CrossFit", "Lite N Tite"]
