@@ -90,7 +90,10 @@ def format_content(page):
 
     beginning_split = text.split("FAQ")
     relevant = beginning_split[1]
-    middle_split = relevant.split("Athlete of the")
+    if "Athlete of the" in relevant:
+        middle_split = relevant.split("Athlete of the")
+    else:
+        middle_split = relevant.split("WOD LOGGING")
     relevant = middle_split[0]
 
     # Clean up
